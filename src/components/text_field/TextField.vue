@@ -8,6 +8,8 @@
       type='text'
       :value='value'
       @input='updateValue'
+      @change="handleChange"
+      @blur="onBlur"
       :disabled='disabled'></textarea>
     <input
       v-else
@@ -15,8 +17,10 @@
       class='ms-TextField-field'
       :type='inputType'
       :value='value'
+      :style="inputStyle"
       @input='updateValue'
       @change="handleChange"
+      @blur="onBlur"
       :disabled='disabled' />
   </div>
 </template>
@@ -39,7 +43,8 @@
         validator(value) {
           return ['text', 'password', 'file'].includes(value);
         }
-      }
+      },
+      inputStyle: Object
     },
 
     computed: {
@@ -61,6 +66,9 @@
       },
       handleChange(event) {
         this.$emit('change', event.target.value);
+      },
+      onBlur(event) {
+        this.$emit('blur', event.target.value);
       }
     }
   };
