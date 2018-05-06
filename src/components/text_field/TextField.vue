@@ -7,6 +7,7 @@
       class='ms-TextField-field'
       type='text'
       :value='value'
+      :style="style"
       @input='updateValue'
       @change="handleChange"
       @blur="onBlur"
@@ -17,7 +18,7 @@
       class='ms-TextField-field'
       :type='inputType'
       :value='value'
-      :style="inputStyle"
+      :style="style"
       @input='updateValue'
       @change="handleChange"
       @blur="onBlur"
@@ -44,7 +45,7 @@
           return ['text', 'password', 'file'].includes(value);
         }
       },
-      inputStyle: Object
+      style: String
     },
 
     computed: {
